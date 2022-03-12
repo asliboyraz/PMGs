@@ -1,5 +1,5 @@
 ###### DataPreprocessing.R ############################################
-### OUTPUT: otu.no0 : filtered and 0's replaced otu table. 
+### OUTPUT  otu.no0 : filtered and 0's replaced otu table. 
 ###         g_otu.no0 : filtered and 0's replaced genus level otu table.
 ###         SAMPLEDATA : labels for samples 
 ###         TAX : taxa for otus
