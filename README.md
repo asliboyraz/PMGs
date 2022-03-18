@@ -17,3 +17,10 @@ All source code freely available under [GPL-3 License](https://www.gnu.org/licen
 
 ## Bugs/Feature requests ##
 I appreciate bug reports and feature requests. Please post to the github issue tracker [here](https://github.com/asliboyraz/pmgs/issues). 
+
+``` r
+library(devtools)
+devtools::install_github("tpq/amalgam")
+library(amalgam)
+?amalgam
+```
