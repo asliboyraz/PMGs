@@ -82,7 +82,27 @@ CoDaDendrogram(X=acomp(PMGs[PMGs_labels$label=="Healthy",]), col="green",add=TRU
 ![](README-plot-2.png)
 
 
+Find Compositional Biomarkers via Distal PMG Balances
 
+```{r}
+library(caret)
+library(balance)
+
+fit.control <- trainControl(method = "repeatedcv", number = 10, repeats = 5,
+                            summaryFunction = twoClassSummary, classProbs = TRUE, allowParallel = F, savePredictions = T)
+
+sbp <- sbp.fromADBA(PMGs, SAMPLEDATA$Status) # get discriminant balances
+sbp <- sbp.subset(sbp) # get distal balances only
+
+compBiomarkers <- as.data.frame(balance.fromSBP(x=PMGs, y = sbp)) 
+compBiomarkers.labeled <- addLabel(data.distalBal.pmg,SAMPLEDATA$Status)
+
+
+set.seed(123)
+fit <- train(label ~ ., data = compBiomarkers.labeled, method = "glm", 
+                          family = "binomial", trControl = fit.control)
+fit$results
+```
 
 
 
