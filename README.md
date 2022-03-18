@@ -68,7 +68,8 @@ head(OGT)
 ![](README-table-1.png)
 
 
-Draw a CODA Dendrogram on PMGs
+Draw a CODA Dendrogram on PMGs. Red and green horizontal bars represent the cirrhosis and
+non-cirrhosis samples respectively.
 
 ```{r}
 PMGs_labels<-cbind(PMGs,SAMPLEDATA$Status)
