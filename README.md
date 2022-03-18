@@ -41,7 +41,7 @@ names(SAMPLEDATA)<-c("sampleID","Status","Label")
 ```
 
 Before `PMGs` construction, the analyst should decide the minimum number of groups to construct. 
-We chose 25 as minimum number for the demo dataset. It means that 
+We chose 25 as minimum number for the demo dataset. It means that minimum 24 principal balances will be used for PMG construction. 
 ```{r}
 V<- mPBclustvar(X) #
 coord<-milr(X,V)
