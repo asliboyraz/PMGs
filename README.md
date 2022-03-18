@@ -19,7 +19,7 @@ otu<-tax_otu[,-(1:7)]
 labels <- read.table('data/task-healthy-cirrhosis.txt', sep="\t",header = FALSE) 
 ```
 
-A Phyloseq object created. Data is filtered and 0's are replaced. TAX table and Sampledata are organized.
+Create a Phyloseq object. Data is filtered and 0's are replaced. TAX table and Sampledata are organized.
 
 ```{r}
 library(phyloseq)
@@ -41,7 +41,7 @@ names(SAMPLEDATA)<-c("sampleID","Status","Label")
 ```
 
 Before `PMGs` construction, the analyst should decide the minimum number of groups to construct. 
-We chose 25 as minimum number for the demo dataset.
+We chose 25 as minimum number for the demo dataset. It means that 
 ```{r}
 V<- mPBclustvar(X) #
 coord<-milr(X,V)
