@@ -43,8 +43,8 @@ SAMPLEDATA$Label<-ifelse(grepl("Cirrhosis", SAMPLEDATA$V2), 1, 0)
 names(SAMPLEDATA)<-c("sampleID","Status","Label")
 ```
 
-Before `PMGs` construction, the analyst should decide the minimum number of groups to construct.
-
+Before `PMGs` construction, the analyst should decide the minimum number of groups to construct. 
+We chose 25 as minimum number for the demo dataset.
 ```{r}
 V<- mPBclustvar(X) #
 coord<-milr(X,V)
@@ -52,9 +52,36 @@ plot(diag(var(coord)),xlab="number of coordinates",ylab="Explained Variance")
 ```
 ![](README-plot-1.png)
 
+Optimal Number of groups is calculated by the method findOptimalNumOfGroups(otu,min).
+```{r}
+minimumNumOfGroups<-25
+numberofgroup<-findOptimalNumOfGroups(otu.no0,minimumNumOfGroups)
+[#] "Optimal Number of group is:27"
+```
+Once optimal number is decided, then it is easy to construct PMGs on otu table.
+The otuput is PMG table and and OGT(OtuID|Group|Taxa) dataframe.
+
+```{r}
+PMGs<-createPMGs(otu.no0,numberofgroup)  
+head(OGT)
+```
+![](README-table-1.png)
 
 
+Draw a CODA Dendrogram on PMGs
 
+```{r}
+PMGs_labels<-cbind(PMGs,SAMPLEDATA$Status)
+names(PMGs_labels)[ncol(PMGs_labels)]<-"label"
+PMGs_labels$label<-as.factor(PMGs_labels$label)
+W<- mPBclustvar(PMGs)
+library(compositions)
+CoDaDendrogram(X=acomp(PMGs),V=W,type="lines",range=c(-10,10))
+CoDaDendrogram(X=acomp(PMGs[PMGs_labels$label=="Cirrhosis",]), col="red",add=TRUE,V=E,type="lines",range=c(-7,7))
+CoDaDendrogram(X=acomp(PMGs[PMGs_labels$label=="Healthy",]), col="green",add=TRUE,V=E,type="lines",range=c(-7,7))
+```
+
+![](README-plot-2.png)
 
 
 
