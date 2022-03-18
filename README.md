@@ -6,9 +6,6 @@
 PMG = Principal Microbial Groups.
 This R package provides functions for the analysis of compositional data (e.g., data representing proportions of different variables/parts). Specifically, this package allows analysis of microbiome data where the OTUs can be grouped through a SBP (sequential binary partitioning) and provides a balance of OTU groups to be utilized for for the search of biomarkers in human microbiota. 
 
-## Authors ##
-Aslı Boyraz, Middle East Technical University
-
 ## Quick Start ##
 
 `PMGs` procedure is illustrated on a cirrhosis study data. Data is obtained from the https://github.com/knights-lab/MLRepo.
