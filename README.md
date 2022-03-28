@@ -104,7 +104,16 @@ fit <- train(label ~ ., data = compBiomarkers.labeled, method = "glm",
 fit$results
 head(compBiomarkers.labeled,c((ncol(compBiomarkers.labeled)-3):ncol(compBiomarkers.labeled))))
 ```
+parameter       ROC      Sens     Spec     ROCSD   SensSD    SpecSD
+1      none 0.9013039 0.8042857 0.832381 0.0783378 0.151831 0.1579316
 
+  G24_and_G27 G23_and_G3 G14_and_G26     label
+1   1.5578426  -1.896845   3.2179900 Cirrhosis
+2   3.3135357  -3.100234   4.7979304 Cirrhosis
+3   1.1978081  -1.644512   1.7841603 Cirrhosis
+4   2.3664767  -2.188206   5.7154872   Healthy
+5  -2.0387176   3.032818   0.3577890 Cirrhosis
+6   0.1877889   3.875660   0.4716944 Cirrhosis
 
 
 
