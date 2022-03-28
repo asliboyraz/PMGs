@@ -49,7 +49,7 @@ plot(diag(var(coord)),xlab="number of coordinates",ylab="Explained Variance")
 ```
 ![](README-plot-1.png)
 
-Optimal Number of groups is calculated by the method findOptimalNumOfGroups(otu,min).
+Optimal number of groups is calculated by the method findOptimalNumOfGroups(otu,min). This method uses logistic regression for each number of `PMGs` and determines the best number of `PMG` choosing the best accuracy measure.  
 ```{r}
 minimumNumOfGroups<-25
 numberofgroup<-findOptimalNumOfGroups(otu.no0,minimumNumOfGroups)
