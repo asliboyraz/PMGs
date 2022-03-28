@@ -102,6 +102,7 @@ set.seed(123)
 fit <- train(label ~ ., data = compBiomarkers.labeled, method = "glm", 
                           family = "binomial", trControl = fit.control)
 fit$results
+head(compBiomarkers.labeled,c((ncol(compBiomarkers.labeled)-3):ncol(compBiomarkers.labeled))))
 ```
 
 
