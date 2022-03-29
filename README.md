@@ -102,9 +102,12 @@ set.seed(123)
 fit <- train(label ~ ., data = compBiomarkers.labeled, method = "glm", 
                           family = "binomial", trControl = fit.control)
 fit$results
-head(compBiomarkers.labeled,c((ncol(compBiomarkers.labeled)-3):ncol(compBiomarkers.labeled))))
+head(compBiomarkers,c((ncol(compBiomarkers.labeled)-3):ncol(compBiomarkers.labeled))))
 ```
 ![](result1.png)
+
+First 3 Compositional Biomarkers : G14/G26 , G23/G3, G24/G27
+
 ![](result2.png)
 
 ## Bugs/Feature requests ##
