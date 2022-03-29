@@ -65,7 +65,7 @@ head(OGT)
 ![](README-table-1.png)
 
 
-Draw a CODA Dendrogram on PMGs. Red and green horizontal bars represent the cirrhosis and
+Draw a CODA Dendrogram on `PMGs`. Red and green horizontal bars represent the cirrhosis and
 non-cirrhosis samples respectively.
 
 ```{r}
@@ -82,7 +82,7 @@ CoDaDendrogram(X=acomp(PMGs[PMGs_labels$label=="Healthy",]), col="green",add=TRU
 ![](README-plot-2.png)
 
 
-Find Compositional Biomarkers via Distal PMG Balances
+Find Compositional Biomarkers via Distal `PMG` Balances
 
 ```{r}
 library(caret)
