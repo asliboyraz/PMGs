@@ -56,7 +56,7 @@ numberofgroup<-findOptimalNumOfGroups(otu.no0,minimumNumOfGroups)
 [#] "Optimal Number of group is:27"
 ```
 Once optimal number is decided, then it is easy to construct PMGs on otu table.
-The otuput is PMG table and and OGT(OtuID|Group|Taxa) dataframe.
+The otuput is a PMG table and a OGT(OtuID|Group|Taxa) dataframe. PMG table is the new variables for each samples. OGT table is a table with the OTUs in each PMGs.
 
 ```{r}
 PMGs<-createPMGs(otu.no0,numberofgroup)  
