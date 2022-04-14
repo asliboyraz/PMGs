@@ -243,6 +243,61 @@ CheckPrevColsPOSorNEG0<-function(M,colno){
   prevflag<-cbind(pos_prevflag,neg_prevflag)
   return(prevflag)
 }
+
+###########################################################################
+###### function draw_PMGTaxa_boxPlot ####################################
+### Draw a boxplot of the taxonomical content of PMGs 
+### -> Second column is flags for rows with negative values.
+### Returns a TRUE column if previous columns only contain 0's.  
+#-----
+# OGT: The output table of createPMGs function
+# taxalevel: "g" for genus, "o" for order , "p" for phylum level
+# numberofgroup : number of PMGs constructed on the dataset.
+#-----
+##########################################################################
+# ASLI BOYRAZ, Apr 2022
+#########################################################################
+draw_PMGTaxa_boxPlot<-function(OGT,taxalevel,numberofgroup){
+  
+  ##3.column phylum | 5. order | 7.  genera
+  if(taxalevel=="g") {
+    level<-7
+    GT<-table(OGT[,c(2,level)]) 
+  } else if(taxalevel=="o"){
+    level<-5
+    GT<-table(OGT[,c(2,level)]) 
+  } else if(taxalevel=="p"){
+    level<-3
+    GT<-table(OGT[,c(2,level)]) 
+  }
+  
+  
+  GT<-as.data.frame(GT)
+  PMGs_Freq<-GT[which(!GT$Freq==0),]
+  
+  library(reshape2)
+  tbl<-dcast(data = PMGs_Freq,formula = as.formula(paste(colnames(PMGs_Freq[2]), "~ group ")), fun.aggregate = sum, value.var = "Freq")
+  order<-paste0("G",1:numberofgroup)
+  PMGs_FreqTBL_p<<-tbl[,c(colnames(PMGs_Freq[2]),order)]
+  
+  PMGs_Freq$group<- factor(PMGs_Freq$group,levels = order)
+  
+  ### Draw Boxplot for POTUGs
+  library(ggplot2)
+  #install.packages("wesanderson")
+  # Load
+  library(RColorBrewer)
+  mycolor = grDevices::colors()[grep('gr(a|e)y', grDevices::colors(), invert = T)]
+  library(randomcoloR)
+  n <- 150
+  palette <- distinctColorPalette(n)
+  
+  ggplot(PMGs_Freq, aes(x = group, y = Freq, fill = PMGs_Freq[,2]),xlab="Frequency") + 
+    geom_bar(position = "fill",stat = "identity") +
+    scale_fill_manual(values = palette )+
+    coord_flip() 
+  
+  
 #####################################################################################
 #####################################################################################
 #####################################################################################
