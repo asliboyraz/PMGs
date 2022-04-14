@@ -19,6 +19,11 @@ otu<-tax_otu[,-(1:7)]
 labels <- read.table('data/task-healthy-cirrhosis.txt', sep="\t",header = FALSE) 
 ```
 
+Load PMG library
+``` r
+source("lib/PMG_lib.R")
+```
+
 Create a Phyloseq object. Data is filtered and 0's are replaced. TAX table and Sampledata are organized.
 
 ```{r}
@@ -64,6 +69,11 @@ head(OGT)
 ```
 ![](README-table-1.png)
 
+The taxonomical content of PMGs can be visualized by a boxplot. Input "g" for genus level content. 
+```{r}
+draw_PMGTaxa_boxPlot(OGT,"g",27) 
+```
+![](README-boxplot.png)
 
 Draw a CODA Dendrogram on `PMGs`. Red and green horizontal bars represent the cirrhosis and
 non-cirrhosis samples respectively.
