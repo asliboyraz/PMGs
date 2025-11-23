@@ -296,7 +296,7 @@ draw_PMGTaxa_boxPlot<-function(OGT,taxalevel,numberofgroup){
     geom_bar(position = "fill",stat = "identity") +
     scale_fill_manual(values = palette )+
     coord_flip() 
-  
+  }
   
 #####################################################################################
 #####################################################################################
@@ -531,3 +531,4 @@ addLabel<-function(x,labels){
   LR.data$label<-as.factor(LR.data$label)
   return(LR.data)
 }
+
